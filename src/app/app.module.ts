@@ -2,47 +2,41 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { NoPageFoundComponent } from './pages/nopagefound/nopagefound.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-// import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
-// import { SidebarComponent } from './shared/sidebar/sidebar.component';
-// import { HeaderComponent } from './shared/header/header.component';
-// import { FooterComponent } from './shared/footer/footer.component';
-import { SharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { Grafica1Component } from './pages/grafica1/grafica1.component';
-
+// Modulos
+import { PagesModule } from './pages/pages.module';
+import { AuthModule } from './auth/auth.module';
+// Routing
+import { AppRoutingModule } from './routing/app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
-import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    NoPageFoundComponent,
-    DashboardComponent,
-    ProgressComponent,
-    Grafica1Component,
-    PagesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule,
+    PagesModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [
     /**
-     * Dependiendo de loq ue pongamos como APP_BASE_HREF
-     * genera una estructura de carpetas distinta, añadiendo niveles
-     * se pueden perder las referencias a los assets cuyas rutas
-     * están a mano en el html
+     * The base href is the URL prefix that should be preserved
+     * when generating and recognizing URLs.
+     *
+     * Dependiendo de lo que pongamos como APP_BASE_HREF
+     * genera una estructura de carpetas distinta para las rutas relativas,
+     * añadiendo niveles se pueden perder las referencias a los assets
+     * cuyas rutas están a mano en el html.
+     *
+     * Al generar las urls relativas que se encuentran dentro de los htmls de
+     * la aplicación toma como carpeta base lo que se le indique aquí.
+     *
+     * Si colocamos / funciona pero no cuando hay urls con hijos children,
+     * porque monta la url de los recursos con la página padre como base.
      */
-    {provide: APP_BASE_HREF, useValue: '/'}
+    {provide: APP_BASE_HREF, useValue: ''}
   ],
   bootstrap: [AppComponent]
 })
