@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 // ng g c pages/progress -s --skipTests=true --force
+
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.css']
 })
 export class ProgressComponent implements OnInit {
+
+  progresos: number[] = [ 50, 25 ];
 
   progreso1 = 60;
   progreso2 = 30;
@@ -28,13 +31,26 @@ export class ProgressComponent implements OnInit {
   }
 
   setProgreso1(progreso: number) {
-    console.log('1',{progreso});
+    console.log('1', { progreso });
     this.progreso1 = progreso;
   }
 
   setProgreso2(progreso: number) {
-    console.log('2',{progreso});
+    console.log('2', { progreso });
     this.progreso2 = progreso;
   }
+
+  // Con array de progresos
+  /**
+   * A get acceso cannot have parameters
+   */
+  getProgreso(index: number) {
+    return `${this.progresos[index]}%`;
+  }
+  setProgreso(index: number, value: number) {
+    console.log(`setProgreso(${index},${value})`);
+    this.progresos[index] = value;
+  }
+
 
 }

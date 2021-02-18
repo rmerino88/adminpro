@@ -13,10 +13,11 @@ export class IncrementadorComponent implements OnInit {
    */
   // @Input('valor') progreso: number = 40;
   @Input() progreso = 0;
+
   /**
    * Son de tipo eventEmitter
    */
-  @Output() newItemEvent = new EventEmitter<number>();
+  @Output() progresoModificado = new EventEmitter<number>();
 
   constructor() { }
 
@@ -37,7 +38,7 @@ export class IncrementadorComponent implements OnInit {
       this.progreso = 100;
     }
 
-    this.newItemEvent.emit(this.progreso);
+    this.progresoModificado.emit(this.progreso);
   }
 }
 

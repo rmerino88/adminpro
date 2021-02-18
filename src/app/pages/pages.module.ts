@@ -23,6 +23,7 @@ import { PagesComponent } from './pages.component';
  */
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ComponentsModule } from '../components/components.module';
          * puedan hacer uso de el.
          */
         // AppRoutingModule,
+        BrowserModule,
         RouterModule,
         SharedModule,
         ComponentsModule,

@@ -2,39 +2,26 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Striped Progress bar 1</h4>
-                <div class="progress m-t-20">
-                    <div class="progress-bar bg-primary progress-bar-striped active" aria-valuenow="85"
-                        aria-valuemin="0" aria-valuemax="100" style="height:10px;" [style.width]="getProgreso1"
-                        role="progressbar">
+                <ng-template ngFor let-progreso [ngForOf]="progresos" let-i="index">
+                    <h4 class="card-title">Striped Progress bar {{i + 1}}</h4>
+                    <div class="progress m-t-20">
+                        <div [ngClass]="{'bg-info': i == 1, 'bg-primary': i != 1}" class="progress-bar progress-bar-striped active" aria-valuenow=""
+                            aria-valuemin="0" aria-valuemax="100" style="height:10px;" [style.width]="getProgreso(i)"
+                            role="progressbar">
+                        </div>
                     </div>
-                </div>
-                <h4 class="card-title">Striped Progress bar 2</h4>
-                <div class="progress m-t-20">
-                    <div class="progress-bar bg-info progress-bar-striped active" aria-valuenow="85" aria-valuemin="0"
-                        aria-valuemax="100" style="height:10px;" [style.width]="getProgreso2" role="progressbar">
-                    </div>
-                </div>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-6" *ngFor="let item of progresos; index as i">
         <div class="card">
             <div class="card-body">
-                <app-incrementador (newItemEvent)="setProgreso1($event)" [progreso]="progreso1" ></app-incrementador>
+                <app-incrementador (progresoModificado)="setProgreso(i, $event)" [progreso]="item"></app-incrementador>
             </div>
         </div>
     </div>
-
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <app-incrementador (newItemEvent)="setProgreso2($event)" [progreso]="progreso2" ></app-incrementador>
-            </div>
-        </div>
-    </div>
-
 </div>
