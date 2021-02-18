@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 // Routing
 import { AppRoutingModule } from './routing/app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
+import { IncrementadorComponent } from './components/incrementador/incrementador.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {APP_BASE_HREF} from '@angular/common';
      * Si colocamos / funciona pero no cuando hay urls con hijos children,
      * porque monta la url de los recursos con la página padre como base.
      */
-    {provide: APP_BASE_HREF, useValue: ''}
+    // {provide: APP_BASE_HREF, useValue: ''}
   ],
   bootstrap: [AppComponent]
 })

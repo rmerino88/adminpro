@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
  */
 // import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ProgressComponent } from './progress/progress.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
@@ -21,6 +22,7 @@ import { PagesComponent } from './pages.component';
  * desde otros components que no sean los de pages.
  */
 import { SharedModule } from '../shared/shared.module';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { SharedModule } from '../shared/shared.module';
          */
         // AppRoutingModule,
         RouterModule,
-        SharedModule
+        SharedModule,
+        ComponentsModule,
+        FormsModule
     ],
     declarations: [
         /**

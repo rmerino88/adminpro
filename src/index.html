@@ -1,35 +1,48 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>AdminPro</title>
-  <!-- APP_BASE_HREF en app.module.ts o en el htmñl, pero hay que indicarlo -->
-  <!-- <base href="/"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
-      <!-- Bootstrap Core CSS -->
-      <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom CSS -->
-      <link href="./assets/css/style.css" rel="stylesheet">
-      <!-- You can change the theme colors from here -->
-      <link href="./assets/css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>AdminPro</title>
+    <!--
+        APP_BASE_HREF en app.module.ts o en el html,
+        pero hay que indicarlo, no funciona de la misma manera.
+        <base href="/"> = {provide: APP_BASE_HREF, useValue: ''}
+    -->
+    <!--
+        The base element allows authors to specify the document base URL
+        for the purposes of resolving relative URLs,
+        and the name of the default browsing context for the purposes of
+        following hyperlinks. The element does not represent any content
+        beyond this information.
+    -->
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="./assets/css/colors/default-dark.css" id="theme" rel="stylesheet">
 </head>
+
 <body class="fix-header card-no-border fix-sidebar">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     <div class="preloader">
-      <div class="loader">
-          <div class="loader__figure"></div>
-          <p class="loader__label">Admin Pro</p>
-      </div>
-  </div>
-  <!-- ============================================================== -->
-  <!-- Main wrapper - style you can find in pages.scss -->
-  <!-- ============================================================== -->
-  <app-root></app-root>
-      <!-- All Jquery -->
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Pro</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <app-root></app-root>
+    <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="./assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -51,4 +64,5 @@
     <!-- ============================================================== -->
     <script src="./assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
+
 </html>
