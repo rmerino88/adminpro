@@ -1,0 +1,14 @@
+<div>
+    <div>
+        <h3>{{ title ? title:'Sin título' }}</h3>
+        <div style="display: block">
+        <canvas baseChart 
+            [data]="doughnutChartDataOther"
+            [labels]="doughnutChartLabelsOther" 
+            [chartType]="doughnutChartType"
+            [colors]="colors"
+            (click)="changeChart()">
+        </canvas>
+        </div>
+    </div>
+</div>

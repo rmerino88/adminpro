@@ -2,18 +2,23 @@
     <span class="input-group-btn">
         <button
             (click)="cambiarValor(-5)"
-            class="btn btn-primary"
+            [ngClass]="btnClass"
             type="button">
-                <i class="fa fa-minus"></i>
+            <i class="fa fa-minus"></i>
         </button>
     </span>
+    <!-- 
+        Se puede poner con el ngModelChange pero se produce un error
+        al llamr al emit y cambiar el valor en el apdre se pierde el foco
+        (ngModelChange)="onEnter( $event )"
+    -->
     <input
-        disabled
         type="number"
         class="form-control"
-        placeholder="Product name"
+        placeholder="Percentage"
+        (keydown.enter)="onPressEnter( $event )"
+        [ngClass]="{'is-invalid': progreso > 100 || progreso < 0 }"
         [(ngModel)]="progreso">
-
     <span class="input-group-btn">
         <button (click)="cambiarValor(5)" class="btn btn-primary" type="button"><i class="fa fa-plus"></i></button>
     </span>

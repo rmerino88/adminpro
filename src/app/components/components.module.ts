@@ -2,16 +2,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { IncrementadorComponent } from './incrementador/incrementador.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { DonaComponent } from './dona/dona.component';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 
 @NgModule({
   imports: [
-      FormsModule
+      FormsModule,
+      BrowserModule,
+      ChartsModule
   ],
   declarations: [
-      IncrementadorComponent
+      IncrementadorComponent,
+      DonaComponent
   ],
   exports: [
-    IncrementadorComponent
+    IncrementadorComponent,
+    DonaComponent
+  ],
+  providers:[
+    ThemeService
   ]
 })
 export class ComponentsModule { }

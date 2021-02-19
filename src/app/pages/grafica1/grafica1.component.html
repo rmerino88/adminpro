@@ -1,1 +1,44 @@
-<p>grafica1 works!</p>
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <!-- <app-dona (changeGraphic)="changeDataset1($event)" [dataset]="dataset1s"></app-dona> -->
+        <app-dona 
+          (changeGraphic)="changeDoughnutChartData1($event)"
+          [doughnutChartDataOther]="doughnutChartData1"
+          [title]="'Ventas'"
+          [doughnutChartLabelsOther]="doughnutChartLabels1">
+        </app-dona>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-dona 
+          (changeGraphic)="changeDoughnutChartData2($event)"
+          [doughnutChartDataOther]="doughnutChartData2"
+          [title]="'Compras'"
+          [doughnutChartLabelsOther]="doughnutChartLabels1">
+        </app-dona>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-dona (progresoModificado)="progresos[i] = $event" [progreso]="item" [btnClass]="'btn-info'"></app-dona>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-dona (progresoModificado)="progresos[i] = $event" [progreso]="item" [btnClass]="'btn-info'"></app-dona>
+      </div>
+    </div>
+  </div>
+</div> -->

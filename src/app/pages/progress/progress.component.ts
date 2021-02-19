@@ -10,8 +10,8 @@ export class ProgressComponent implements OnInit {
 
   progresos: number[] = [ 50, 25 ];
 
-  progreso1 = 60;
-  progreso2 = 30;
+  // progreso1 = 60;
+  // progreso2 = 30;
 
   constructor() { }
 
@@ -23,22 +23,22 @@ export class ProgressComponent implements OnInit {
    * Al comportarse de esta manera al haber un cambio en la propiedad
    * progreso el return que devuelve el método es distinto, y se actualiza inmediatamente.
    */
-  get getProgreso1() {
-    return `${this.progreso1}%`;
-  }
-  get getProgreso2() {
-    return `${this.progreso2}%`;
-  }
+  // get getProgreso1() {
+  //   return `${this.progreso1}%`;
+  // }
+  // get getProgreso2() {
+  //   return `${this.progreso2}%`;
+  // }
 
-  setProgreso1(progreso: number) {
-    console.log('1', { progreso });
-    this.progreso1 = progreso;
-  }
+  // setProgreso1(progreso: number) {
+  //   console.log('1', { progreso });
+  //   this.progreso1 = progreso;
+  // }
 
-  setProgreso2(progreso: number) {
-    console.log('2', { progreso });
-    this.progreso2 = progreso;
-  }
+  // setProgreso2(progreso: number) {
+  //   console.log('2', { progreso });
+  //   this.progreso2 = progreso;
+  // }
 
   // Con array de progresos
   /**
@@ -47,10 +47,16 @@ export class ProgressComponent implements OnInit {
   getProgreso(index: number) {
     return `${this.progresos[index]}%`;
   }
-  setProgreso(index: number, value: number) {
-    console.log(`setProgreso(${index},${value})`);
-    this.progresos[index] = value;
-  }
+
+  /**
+   * Podríamos deshacernos de esta función, ya que la asignación puede
+   * hacerse directamente ne el html padre, recogiendo el valor del evento
+   * y asignandoselo a la propiedad progresos
+   */
+  // setProgreso(index: number, value: number) {
+  //   console.log(`setProgreso(${index},${value})`);
+  //   this.progresos[index] = value;
+  // }
 
 
 }

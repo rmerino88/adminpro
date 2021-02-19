@@ -9,6 +9,8 @@ import { NgModule } from '@angular/core';
 // import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 import { ProgressComponent } from './progress/progress.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
@@ -23,8 +25,6 @@ import { PagesComponent } from './pages.component';
  */
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
-import { BrowserModule } from '@angular/platform-browser';
-
 
 @NgModule({
     imports: [
@@ -59,6 +59,7 @@ import { BrowserModule } from '@angular/platform-browser';
         NoPageFoundComponent,
         DashboardComponent,
         PagesComponent
-    ]
+    ],
+    providers:[ ]
 })
 export class PagesModule { }
