@@ -25,6 +25,7 @@ import { PagesComponent } from './pages.component';
  */
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
+import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 
 @NgModule({
     imports: [
@@ -51,14 +52,16 @@ import { ComponentsModule } from '../components/components.module';
         Grafica1Component,
         NoPageFoundComponent,
         DashboardComponent,
-        PagesComponent
+        PagesComponent,
+        AcountSettingsComponent
     ],
     exports: [
         ProgressComponent,
         Grafica1Component,
         NoPageFoundComponent,
         DashboardComponent,
-        PagesComponent
+        PagesComponent,
+        AcountSettingsComponent
     ],
     providers:[ ]
 })

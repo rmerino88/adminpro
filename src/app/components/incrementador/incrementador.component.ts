@@ -47,7 +47,6 @@ export class IncrementadorComponent implements OnInit {
     if (this.progreso > 100) {
       this.progreso = 100;
     }
-    // console.log(this.progreso);
     this.progresoModificado.emit(this.progreso);
   }
 
@@ -57,14 +56,12 @@ export class IncrementadorComponent implements OnInit {
     // } else if (nuevoValor < 0) {
     //   this.progreso = 0;
     // }
-    console.log(nuevoValor);
     this.progreso = nuevoValor;
     this.progresoModificado.emit(this.progreso);
   }
 
   onPressEnter(event: KeyboardEvent) {
-    console.log(event);
-    if( event.key === 'Enter' ){
+    if (event.key === 'Enter') {
       this.progresoModificado.emit(this.progreso);
     }
   }
