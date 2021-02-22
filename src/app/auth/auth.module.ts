@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    RouterModule
+    RouterModule,
+    // Si no añadimos el formsModule se produce un post normal del formulario
+    // COn el FormsModule conseguimos manejar ese envío del form como le indiquemos
+    FormsModule
 ],
   declarations: [
     LoginComponent,
