@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { ProgressComponent } from './progress/progress.component';
@@ -26,6 +27,8 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
     imports: [
@@ -40,7 +43,8 @@ import { AcountSettingsComponent } from './acount-settings/acount-settings.compo
         RouterModule,
         SharedModule,
         ComponentsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     declarations: [
         /**
@@ -53,7 +57,9 @@ import { AcountSettingsComponent } from './acount-settings/acount-settings.compo
         NoPageFoundComponent,
         DashboardComponent,
         PagesComponent,
-        AcountSettingsComponent
+        AcountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     exports: [
         ProgressComponent,
@@ -63,6 +69,7 @@ import { AcountSettingsComponent } from './acount-settings/acount-settings.compo
         PagesComponent,
         AcountSettingsComponent
     ],
-    providers:[ ]
+    providers:[
+     ]
 })
 export class PagesModule { }

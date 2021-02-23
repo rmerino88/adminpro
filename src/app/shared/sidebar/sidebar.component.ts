@@ -9,7 +9,7 @@ import { SidebarService } from '../../services/sidebar.service';
 export class SidebarComponent implements OnInit {
 
   public menuItems: any;
-  
+
   constructor(private sidebarService: SidebarService) {
     this.menuItems = this.sidebarService.menu;
   }
