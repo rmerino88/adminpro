@@ -21,7 +21,7 @@ import { IncrementadorComponent } from './components/incrementador/incrementador
     AuthModule,
     AppRoutingModule
   ],
-  providers: [ ],
+  // providers: [{provide: APP_BASE_HREF, useValue: ''}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,8 @@ export class BreadcrumbsComponent implements OnDestroy {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.titleSubs$ = this.getDataRoute();
-    console.log(this.activatedRoute.snapshot.children);
+    // Esta manera no es útil ya que solo se ejecuta cunado se carga por primera vez el componente
+    console.log(this.activatedRoute.snapshot.children[0].data);
   }
 
   getDataRoute() {

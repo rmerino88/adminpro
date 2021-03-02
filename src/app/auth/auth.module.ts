@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common';
+import { OtherComponent } from './other/other.component';
 
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule,
     // Si no añadimos el formsModule se produce un post normal del formulario
-    // COn el FormsModule conseguimos manejar ese envío del form como le indiquemos
-    FormsModule
+    // Con el FormsModule conseguimos manejar ese envío del form como le indiquemos
+    FormsModule,
+    ReactiveFormsModule
 ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OtherComponent
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OtherComponent
   ]
 })
 export class AuthModule { }
