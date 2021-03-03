@@ -12,7 +12,7 @@ export class IncrementadorComponent implements OnInit {
    * <app-incrementador [valor]=20 ></app-incrementador>
    */
   // @Input('valor') progreso: number = 40;
-  @Input() progreso = 0;
+  @Input() progreso: number;
   @Input() btnClass = 'btn-primary';
 
   /**
@@ -50,7 +50,7 @@ export class IncrementadorComponent implements OnInit {
     this.progresoModificado.emit(this.progreso);
   }
 
-  onEnter(nuevoValor) {
+  onEnter( nuevoValor: number ) {
     // if (nuevoValor > 100) {
     //   this.progreso = 100;
     // } else if (nuevoValor < 0) {

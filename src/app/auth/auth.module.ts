@@ -5,10 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common';
-import { OtherComponent } from './other/other.component';
 
 
 @NgModule({
+  declarations: [
+    LoginComponent,
+    RegisterComponent
+  ],
+  exports: [
+    LoginComponent,
+    RegisterComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -16,16 +23,6 @@ import { OtherComponent } from './other/other.component';
     // Con el FormsModule conseguimos manejar ese envío del form como le indiquemos
     FormsModule,
     ReactiveFormsModule
-],
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    OtherComponent
-  ],
-  exports: [
-    LoginComponent,
-    RegisterComponent,
-    OtherComponent
   ]
 })
 export class AuthModule { }

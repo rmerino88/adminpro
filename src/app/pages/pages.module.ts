@@ -69,7 +69,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PagesComponent,
         AcountSettingsComponent
     ],
-    providers:[
-     ]
+    providers: []
 })
 export class PagesModule { }

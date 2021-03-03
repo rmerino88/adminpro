@@ -9,7 +9,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-
+import { NoPageFoundComponent } from './nopagefound/nopagefound.component';
 
 const routes: Routes = [
   {
@@ -23,8 +23,7 @@ const routes: Routes = [
       { path: 'promesas', component: PromesasComponent, data: {title: 'Promesas'}},
       { path: 'rxjs', component: RxjsComponent, data: {title: 'Rxjs'}},
     ]
-  },
-
+  }
   // Ejemplos de paths
   //{ path: 'path/:routeParam', component: MyComponent },
   //{ path: 'staticPath', component: ... },
