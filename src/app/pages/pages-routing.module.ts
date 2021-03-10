@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { AuthGuard } from '../guards/auth.guard';
 
 // Components
 import { PagesComponent } from './pages.component';
@@ -9,12 +10,12 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { NoPageFoundComponent } from './nopagefound/nopagefound.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: PagesComponent,
+    canActivate: [ AuthGuard ],
     children: [
       { path: '', component: DashboardComponent, data: {title: 'Dashboard'} },
       { path: 'progress', component: ProgressComponent, data: {title: 'Progress'}},

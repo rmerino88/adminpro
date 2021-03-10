@@ -220,7 +220,8 @@
                             <li><a [routerLink]="[ 'account-settings' ]"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- Si no poenemos la barra nos redirige a /dashboard/login -->
-                            <li><a [routerLink]="[ '/login' ]" ><i class="fa fa-power-off"></i> Logout</a></li>
+                            <!-- <li (click)="logOut()"><i class="fa fa-power-off"></i> Logout</li> -->
+                            <li><a class="cursor" href="#" (click)="logOut()"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>
                 </li>

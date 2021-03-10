@@ -22,7 +22,8 @@ import { CommonModule } from '@angular/common';
     // Si no añadimos el formsModule se produce un post normal del formulario
     // Con el FormsModule conseguimos manejar ese envío del form como le indiquemos
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // HttpClientModule
   ]
 })
 export class AuthModule { }
