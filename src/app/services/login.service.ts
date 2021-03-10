@@ -26,7 +26,8 @@ export class LoginService {
   public login(formData: LoginForm) {
     return this.http.post(`${this.base_url}/login`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        console.log(resp.token);
+        localStorage.setItem('jwtoken', resp.token);
       })
     );
   }
@@ -57,12 +58,12 @@ export class LoginService {
       tap((resp: any) => {
         console.log(`tap ${resp}`);
         if (resp) {
-          localStorage.setItem('jwtoken', resp.newToken);
+          localStorage.setItem('jwtoken', resp.token);
         }
       }),
       map((resp: any) => {
         console.log(`map ${resp}`);
-        // if (resp.ok && resp.newToken) {
+        // if (resp.ok && resp.token) {
         if (resp) {
           console.log('return true');
           return true;
@@ -92,7 +93,7 @@ export class LoginService {
         // resp => true no funciona
         (resp: any) => {
           if (resp) {
-            localStorage.setItem('jwtoken', resp.newToken);
+            localStorage.setItem('jwtoken', resp.token);
           }
         }),
       map(resp => resp ? true : false),
@@ -102,14 +103,14 @@ export class LoginService {
 
   googleInit() {
 
-    return new Promise( resolve => {
+    return new Promise<void>( resolve => {
       console.log('entra googleInit');
       gapi.load('auth2', () => {
         this.auth2 = gapi.auth2.init({
           client_id: '1056987659897-h67o3g721r2o8ovul342fmiudpudm8hm.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin',
         });
-        resolve(true);
+        resolve();
       });
     });
   }

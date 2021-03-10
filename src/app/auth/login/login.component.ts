@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   public loginForm = this.fb.group({
     email: [localStorage.getItem('email'), [Validators.required, Validators.pattern(this.emailPattern)]],
     passwd: ['', [Validators.required, Validators.minLength(6)]],
-    recuerdame: [false]
+    recuerdame: [localStorage.getItem('email') ? true : false]
   });
 
   private formSubmitted = false;
@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
               private fb: FormBuilder,
               private loginService: LoginService,
               private ngZone: NgZone) { }
-
+  /**
+   * Al cargar el login sale autocompletado pero por las oopciones del navegador
+   * de inicio de sesión, no por nuestra aplicación
+   */
   ngOnInit() {
     this.renderButton();
   }
