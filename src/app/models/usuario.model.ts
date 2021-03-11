@@ -1,3 +1,5 @@
+import { environment } from '../../environments/environment'
+
 export class UsuarioTesting {
     public nombre: string;
     public email: string;
@@ -6,7 +8,7 @@ export class UsuarioTesting {
     public google: boolean;
     public role: string;
     public uid: string;
-    constructor(nombre, email, passwd, img?, google?, role = 'NO_ROLE', uid? ) {
+    constructor(nombre, email, passwd, img?, google?, role = 'NO_ROLE', uid?) {
         this.nombre = nombre;
         this.email = email;
         this.passwd = passwd;
@@ -18,14 +20,28 @@ export class UsuarioTesting {
     }
 }
 
+const baseImageUrl = `${environment.base_url}/upload/usuarios/`;
+
 export class Usuario {
     constructor(
         public nombre: string,
         public email: string,
-        public passwd: string,
+        public role: string = 'NO_ROLE',
         public img?: string,
         public google?: boolean,
-        public role: string = 'NO_ROLE',
-        public uid?: string
-    ) {}
+        public uid?: string,
+        public passwd?: string
+    ) { }
+
+    get imagenUrl() {
+        if (!this.google) {
+            if (this.img) {
+                return `${baseImageUrl}${this.img}`;
+            } else {
+                return `${baseImageUrl}no-image`;
+            }
+        } else {
+            return this.img;
+        }
+    }
 }

@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ajustes perfil de usuario</h4>
+                <h6 class="card-subtitle">Información del usuario</h6>
+                <form class="form p-t-20" id="modifyformUserInfo" [formGroup]="modifyform"
+                    (ngSubmit)="actualizarPerfil()">
+                    <div class="form-group">
+                        <label for="exampleInputuname">User Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Username"
+                                formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <!-- Funciona con readOnly, pero no con disabled, en caso de querer deshabilitar debe ser desde el ts -->
+                            <!-- El readOnly envía la información del campo/ El disabled desde el ts no -->
+                            <input [readOnly]="usuario.google" type="email" class="form-control" id="exampleInputEmail1"
+                                placeholder="Enter email" formControlName="email">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i> Guardar cambios
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del usuario</h6>
+                <!--
+                    Property bindings are actually manipulating the DOM
+                    and they get to preserve data types. Curly brace binding
+                    is string interpolation of the HTML and always results in strings
+                -->
+                <!-- <img src="{{usuario.imagenUrl}}" alt="{{usuario.email}}"> -->
+                <!-- <img [style.display]= "mostrarImagen?'block':'none'" [src]="imageTempUrl" [alt]="usuario.email"> -->
+                <img *ngIf="!imageTempUrl" [src]="usuario.imagenUrl" [alt]="usuario.email">
+                <img *ngIf="imageTempUrl" [src]="imageTempUrl">
+
+                <input type="file" name="imagen" (change)="cambiarImagen($event.target.files[0], $event.target.result)">
+                <button type="button" (click)="actualizarImagen()"
+                    class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!image">
+                    <i class="fa fa-save"></i> Cambiar imagen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

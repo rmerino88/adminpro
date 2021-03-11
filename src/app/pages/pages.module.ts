@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
  */
 // import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,6 +29,7 @@ import { ComponentsModule } from '../components/components.module';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         SharedModule,
         ComponentsModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule
     ],
     declarations: [
@@ -59,7 +61,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PagesComponent,
         AcountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        PerfilComponent
     ],
     exports: [
         ProgressComponent,
@@ -67,7 +70,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         NoPageFoundComponent,
         DashboardComponent,
         PagesComponent,
-        AcountSettingsComponent
+        AcountSettingsComponent,
+        PerfilComponent
     ],
     providers: []
 })

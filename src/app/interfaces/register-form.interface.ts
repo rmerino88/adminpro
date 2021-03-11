@@ -11,3 +11,9 @@ export interface LoginForm {
   passwd: string;
   recuerdame: boolean;
 }
+
+export interface ModifyForm {
+  nombre: string;
+  email: string;
+  role: string;
+}

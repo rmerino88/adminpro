@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { Usuario } from '../../models/usuario.model';
 
 declare const gapi: any;
 
@@ -11,15 +12,25 @@ declare const gapi: any;
 })
 export class HeaderComponent implements OnInit {
 
+  public usuario: Usuario;
+  // public imagenUrl: string;
+  // public username: string;
+  // public email: string;
+
   constructor(private router: Router,
               private ngZone: NgZone,
               private loginService: LoginService) {
     this.startApp();
+    this.usuario = this.loginService.usuario;
+    // this.imagenUrl = this.loginService.usuario.imagenUrl;
+    // this.username = this.loginService.usuario.nombre;
+    // this.email = this.loginService.usuario.email;
   }
 
   public auth2: any;
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   logOut() {
     const auth2 = gapi.auth2.getAuthInstance();
