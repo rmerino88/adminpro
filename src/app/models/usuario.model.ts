@@ -1,4 +1,5 @@
 import { environment } from '../../environments/environment'
+import { RegisterForm } from '../interfaces/register-form.interface';
 
 export class UsuarioTesting {
     public nombre: string;
@@ -16,11 +17,10 @@ export class UsuarioTesting {
         this.google = google;
         this.role = role;
         this.uid = uid ? uid : 'ficticio_uid';
-
     }
 }
 
-const baseImageUrl = `${environment.base_url}/upload/usuarios/`;
+const baseImageUrl = `${environment.base_url}/upload/usuarios`;
 
 export class Usuario {
     constructor(
@@ -33,15 +33,26 @@ export class Usuario {
         public passwd?: string
     ) { }
 
+    // Al no ser static no podemos acceder sin crear una instancia
+    static populate( usuario ) {
+        return new Usuario(usuario.nombre,
+            usuario.email,
+            usuario.role,
+            usuario.img,
+            usuario.google,
+            usuario.uid,
+            usuario.passwd );
+    }
+
     get imagenUrl() {
-        if (!this.google) {
-            if (this.img) {
-                return `${baseImageUrl}${this.img}`;
+        if (this.img) {
+            if (this.google) {
+                return this.img;
             } else {
-                return `${baseImageUrl}no-image`;
+                return `${baseImageUrl}/${this.img}`;
             }
         } else {
-            return this.img;
+            return `${baseImageUrl}/no-image`;
         }
     }
 }

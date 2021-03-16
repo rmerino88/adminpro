@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Usuario } from '../../models/usuario.model';
 import { LoginService } from '../../services/login.service';
 import { FileUploadService } from '../../services/file-upload.service';
+import { Tipo } from 'src/app/models/tipos.model';
 
 @Component({
   selector: 'app-perfil',
@@ -55,7 +56,7 @@ export class PerfilComponent implements OnInit {
 
   actualizarPerfil() {
     // Meter en objeto usuario los campos modificados
-    this.loginService.modifyUsuarioOther(this.modifyform.value).subscribe(
+    this.loginService.modifyUsuario(this.modifyform.value).subscribe(
       (response: any) => {
         this.usuario.nombre = response.usuarioActualizado.nombre;
         this.usuario.email = response.usuarioActualizado.email;
@@ -96,7 +97,7 @@ export class PerfilComponent implements OnInit {
   }
 
   actualizarImagen() {
-    this.fileUploadService.actualizarFoto(this.image, 'usuarios', this.usuario.uid)
+    this.fileUploadService.actualizarFoto(this.image, Tipo.usuarios, this.usuario.uid)
       .then((img) => {
         if (!img) {
           Swal.fire('Error!', 'No ha sido posible guardar la imagen', 'error');

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { LoginForm, ModifyForm } from '../interfaces/register-form.interface';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { Usuario } from '../models/usuario.model';
+import { ModifyForm } from '../interfaces/modify-form.interface';
+import { LoginForm } from '../interfaces/login-form.interface';
 
 declare const gapi: any;
 
@@ -132,7 +133,7 @@ export class LoginService {
     );
   }
 
-  public modifyUsuarioOther(formData: ModifyForm) {
+  public modifyUsuario(formData: ModifyForm) {
     formData.role = this.usuario.role;
     const httpHeaders = new HttpHeaders()
       .append('Content-Type', 'application/json')

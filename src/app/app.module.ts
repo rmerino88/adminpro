@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 // Routing
 import { AppRoutingModule } from './routing/app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
+import { ImagenUrlPipe } from './pipes/imagen-url.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {APP_BASE_HREF} from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule,
+    AuthModule
   ],
   // providers: [{provide: APP_BASE_HREF, useValue: ''}],
   bootstrap: [AppComponent]

@@ -1,0 +1,39 @@
+<div class="fondo-modal-imagen" [class.oculto]="modalImagenService.ocultarModal">
+    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+        style="display: block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel1">Cargar imagen</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3>Seleccione una imagen</h3>
+                </div>
+                <div class="text-center">
+                    <img
+                        *ngIf="!imageTempUrl"
+                        [src]="modalImagenService.img"
+                        alt="imagen de perfil"
+                        class="avatar-modal animated fadeIn fast">
+                    
+                    <img
+                        *ngIf="imageTempUrl"
+                        [src]="imageTempUrl"
+                        class="avatar-modal animated fadeIn fast">
+                </div>
+                <input type="file" name="imagen" (change)="cambiarImagen($event.target.files[0], $event.target.result)">
+                
+                
+                <div class="modal-footer">
+                    <button (click)="cerrarModal()" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" (click)="actualizarImagen()"
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!imageToUpload">
+                        <i class="fa fa-save"></i> Cambiar imagen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

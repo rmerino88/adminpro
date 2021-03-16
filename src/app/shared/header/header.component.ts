@@ -13,18 +13,12 @@ declare const gapi: any;
 export class HeaderComponent implements OnInit {
 
   public usuario: Usuario;
-  // public imagenUrl: string;
-  // public username: string;
-  // public email: string;
 
   constructor(private router: Router,
               private ngZone: NgZone,
               private loginService: LoginService) {
     this.startApp();
     this.usuario = this.loginService.usuario;
-    // this.imagenUrl = this.loginService.usuario.imagenUrl;
-    // this.username = this.loginService.usuario.nombre;
-    // this.email = this.loginService.usuario.email;
   }
 
   public auth2: any;

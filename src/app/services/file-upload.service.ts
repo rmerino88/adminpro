@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Tipo } from '../models/tipos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class FileUploadService {
   }
 
   async actualizarFoto(archivo: File,
-                       tipo: 'usuarios' | 'medicos' | 'hospitales',
+                       tipo: Tipo,
                        id: string) {
     try {
       const url = `${this.base_url}/upload/${tipo}/${id}`;

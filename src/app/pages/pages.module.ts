@@ -30,6 +30,8 @@ import { AcountSettingsComponent } from './acount-settings/acount-settings.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { ImagenUrlPipe } from '../pipes/imagen-url.pipe';
 
 @NgModule({
     imports: [
@@ -62,7 +64,10 @@ import { PerfilComponent } from './perfil/perfil.component';
         AcountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        PerfilComponent
+        PerfilComponent,
+        UsuariosComponent,
+        // Los pipes ya no se importan, solo se declaran
+        ImagenUrlPipe
     ],
     exports: [
         ProgressComponent,

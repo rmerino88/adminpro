@@ -5,15 +5,3 @@ export interface RegisterForm {
   passwd2: string;
   terminos: boolean;
 }
-
-export interface LoginForm {
-  email: string;
-  passwd: string;
-  recuerdame: boolean;
-}
-
-export interface ModifyForm {
-  nombre: string;
-  email: string;
-  role: string;
-}

@@ -1,0 +1,107 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- <input type="text" (keyup)="buscar($event.target.value)" class="form-control" placeholder="Buscar usuario..." /> -->
+                <!-- <input type="text"
+                    placeholder="Buscar usuario..."
+                    class="form-control"
+                    [(ngModel)]="term"
+                    (keyup)="buscar()"
+                /> -->
+                
+                <input type="text"  
+                    class="form-control"
+                    placeholder="Buscar usuario..."
+                    (keyup)="buscarTerminoKeyUp( termBusqueda.value )"
+                    #termBusqueda
+                />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div *ngIf="cargando" class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando...</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn fast" *ngIf="!cargando"> 
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Usuarios</h4>
+                <!-- <h6 class="card-subtitle">Usuarios coincidentes con la búsqueda - Total: {{totalUsuarios}} : {{from}}</h6> -->
+                <h6 class="card-subtitle">Usuarios coincidentes con la búsqueda - Mostrando resultados del {{from}} al {{ from*1 + limit*1}} de {{totalUsuarios}} resultados.</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Avatar</th>
+                                <th>Correo</th>
+                                <th>Nombre</th>
+                                <th>Role</th>
+                                <th>Auth</th>
+                                <th class="text-nowrap w100">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuarioItem of usuarios; let i=index">
+                                <!-- <td><img [src]="usuarioItem.imagenUrl" [alt]="usuarioItem.nombre"></td> -->
+                                <td class="text-center">
+                                    <img (click)="abrirModalImagen(usuarioItem)" [src]="usuarioItem.img | imagenurl:usuarioItem.google" [alt]="usuarioItem.nombre" class="avatar cursor">
+                                </td>
+                                <td>{{usuarioItem.email}}</td>
+                                <td>{{usuarioItem.nombre}}</td>
+                                <td>
+                                    <select
+                                    class="form-control w140"
+                                    [(ngModel)]="usuarioItem.role"
+                                    (change)="cambiarRole(usuarioItem)">
+                                    <option value="SUPER_MAQUINA">Máquina</option>
+                                    <option value="ADMIN_ROLE">Admin</option>
+                                    <option value="USER_ROLE">User</option>
+                                </select>
+                            </td>
+                            <td>                                  
+                                <span *ngIf="usuarioItem.google; else normal" class="label label-danger">Google</span>
+                                <ng-template #normal><span class="label label-info">Normal</span></ng-template>
+                            </td>
+                            <td class="text-nowrap text-center">
+                                <a data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                </a>
+                                <!-- Se podría deshabilitar el botón de borrar en caso de que sea el del usuario -->
+                                <a data-toggle="tooltip" data-original-title="Close" (click)="eliminarUsuario(usuarioItem, termBusqueda.value)">
+                                    <i class="fa fa-close text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="desplazamiento">
+                <button [disabled]="from==0" (click)="actualizarTabla(-1,termBusqueda.value)" class="btn btn-secondary" type="button">Anterior</button>
+                <!-- <select
+                    (change)="changeNumeroresultados($event.target.value, termBusqueda.value)"
+                    class="select2 form-control custom-select select2-hidden-accessible select-paginador"
+                    tabindex="-1"
+                    aria-hidden="true">
+                    <option *ngFor="let size of numerosResultados" [value]="size" [selected]="size == limit">{{size}}</option>
+                    </select> -->
+                    <select
+                        (change)="changeNumeroresultados($event.target.value, termBusqueda.value)"
+                        class="select2 form-control custom-select select2-hidden-accessible select-paginador"
+                        [(ngModel)]="limit">
+                        <option *ngFor="let size of numerosResultados" [value]="size">{{size}}</option>
+                    </select>
+                    <button [disabled]="showBtnSiguientes" (click)="actualizarTabla(1, termBusqueda.value)" class="btn btn-secondary" type="button">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

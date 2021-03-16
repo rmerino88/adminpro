@@ -47,9 +47,11 @@
                 -->
                 <!-- <img src="{{usuario.imagenUrl}}" alt="{{usuario.email}}"> -->
                 <!-- <img [style.display]= "mostrarImagen?'block':'none'" [src]="imageTempUrl" [alt]="usuario.email"> -->
-                <img *ngIf="!imageTempUrl" [src]="usuario.imagenUrl" [alt]="usuario.email">
-                <img *ngIf="imageTempUrl" [src]="imageTempUrl">
-
+                <div class="text-center">
+                    <img *ngIf="!imageTempUrl" [src]="usuario.imagenUrl" [alt]="usuario.email"
+                        class="animated fadeIn fast">
+                    <img *ngIf="imageTempUrl" [src]="imageTempUrl" class="animated fadeIn fast">
+                </div>
                 <input type="file" name="imagen" (change)="cambiarImagen($event.target.files[0], $event.target.result)">
                 <button type="button" (click)="actualizarImagen()"
                     class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!image">
