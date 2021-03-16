@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
 })
 export class UsuariosComponent implements OnInit, OnDestroy {
 
-  // term = '';
+  public termino = '';
   public from = 0;
   public totalUsuarios = 0;
   public usuarios: Usuario[] = [];
@@ -30,6 +30,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
   public imgSubs: Subscription;
 
+
   constructor(private usuarioService: UsuarioService,
               private loginService: LoginService,
               private busquedasService: BusquedasService,
@@ -38,11 +39,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buscar();
     this.imgSubs = this.modalImagenService.imgCambiada.subscribe((img) => {
-      // if (termino) {
-      //   this.buscarTermino(termino);
-      // } else {
       this.buscar();
-      // }
     });
   }
 
@@ -52,26 +49,25 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
   buscar() {
     this.cargando = true;
-    this.usuarioService.buscarUsuarios('' + this.from, '' + this.limit).subscribe(({ total, resultado }) => {
-      this.usuarios = resultado;
-      this.totalUsuarios = total;
-      this.cargando = false;
-      this.setBotonSiguiente();
-    });
-  }
-
-  buscarTermino(termino: string) {
-    this.cargando = true;
-    this.busquedasService.buscarUsuariosColeccion(termino, 'usuarios', '' + this.from, '' + this.limit)
-      .subscribe(({ total, resultado }) => {
+    if (this.termino) {
+      this.busquedasService.buscarUsuariosColeccion(this.termino, 'usuarios', '' + this.from, '' + this.limit)
+        .subscribe(({ total, resultado }) => {
+          this.usuarios = resultado;
+          this.totalUsuarios = total;
+          this.cargando = false;
+          this.setBotonSiguiente();
+        });
+    } else {
+      this.usuarioService.buscarUsuarios('' + this.from, '' + this.limit).subscribe(({ total, resultado }) => {
         this.usuarios = resultado;
         this.totalUsuarios = total;
         this.cargando = false;
         this.setBotonSiguiente();
       });
+    }
   }
 
-  async eliminarUsuario(usuario: Usuario, termino: string) {
+  async eliminarUsuario(usuario: Usuario) {
     if (usuario.uid === this.loginService.usuario.uid) {
       Swal.fire('Error', 'No puede borrarse a sí mismo', 'error');
     } else {
@@ -93,11 +89,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
                 `El usuario ${usuario.nombre} ha sido eliminado.`,
                 'success'
               );
-              if (termino) {
-                this.buscarTermino(termino);
-              } else {
-                this.buscar();
-              }
+              this.buscar();
             }
           });
         }
@@ -126,32 +118,20 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     // this.modalImagenService.abrirModalAlt(usuario);
   }
 
-  buscarTerminoKeyUp(termino: string) {
+  buscarTerminoKeyUp() {
     this.from = 0;
-    if (termino) {
-      this.buscarTermino(termino);
-    } else {
-      this.buscar();
-    }
+    this.buscar();
   }
 
-  actualizarTabla(moveIndex: number, termino: string) {
+  actualizarTabla(moveIndex: number) {
     this.from += (moveIndex * this.limit);
-    if (termino) {
-      this.buscarTermino(termino);
-    } else {
-      this.buscar();
-    }
+    this.buscar();
   }
 
-  changeNumeroresultados(value: number, termino: string) {
+  changeNumeroresultados(value: number) {
     this.limit = value;
     this.from = 0;
-    if (termino) {
-      this.buscarTermino(termino);
-    } else {
-      this.buscar();
-    }
+    this.buscar();
   }
 
   private setBotonSiguiente() {

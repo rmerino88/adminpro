@@ -2,18 +2,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <!-- <input type="text" (keyup)="buscar($event.target.value)" class="form-control" placeholder="Buscar usuario..." /> -->
-                <!-- <input type="text"
-                    placeholder="Buscar usuario..."
-                    class="form-control"
-                    [(ngModel)]="term"
-                    (keyup)="buscar()"
-                /> -->
-                
-                <input type="text"  
+                <!-- 
+                    <input type="text"
+                        (keyup)="buscar($event.target.value)"
+                        class="form-control"
+                        placeholder="Buscar usuario..." />
+                -->
+                    <input type="text"  
                     class="form-control"
                     placeholder="Buscar usuario..."
-                    (keyup)="buscarTerminoKeyUp( termBusqueda.value )"
+                    (keyup)="buscarTerminoKeyUp()"
+                    [(ngModel)]="termino"
                     #termBusqueda
                 />
             </div>
@@ -76,7 +75,7 @@
                                     <i class="fa fa-pencil text-inverse m-r-10"></i>
                                 </a>
                                 <!-- Se podría deshabilitar el botón de borrar en caso de que sea el del usuario -->
-                                <a data-toggle="tooltip" data-original-title="Close" (click)="eliminarUsuario(usuarioItem, termBusqueda.value)">
+                                <a data-toggle="tooltip" data-original-title="Close" (click)="eliminarUsuario(usuarioItem)">
                                     <i class="fa fa-close text-danger"></i>
                                 </a>
                             </td>
@@ -85,21 +84,21 @@
                 </table>
             </div>
             <div id="desplazamiento">
-                <button [disabled]="from==0" (click)="actualizarTabla(-1,termBusqueda.value)" class="btn btn-secondary" type="button">Anterior</button>
+                <button [disabled]="from==0" (click)="actualizarTabla(-1)" class="btn btn-secondary" type="button">Anterior</button>
                 <!-- <select
-                    (change)="changeNumeroresultados($event.target.value, termBusqueda.value)"
+                    (change)="changeNumeroresultados($event.target.value)"
                     class="select2 form-control custom-select select2-hidden-accessible select-paginador"
                     tabindex="-1"
                     aria-hidden="true">
                     <option *ngFor="let size of numerosResultados" [value]="size" [selected]="size == limit">{{size}}</option>
                     </select> -->
                     <select
-                        (change)="changeNumeroresultados($event.target.value, termBusqueda.value)"
+                        (change)="changeNumeroresultados($event.target.value)"
                         class="select2 form-control custom-select select2-hidden-accessible select-paginador"
                         [(ngModel)]="limit">
                         <option *ngFor="let size of numerosResultados" [value]="size">{{size}}</option>
                     </select>
-                    <button [disabled]="showBtnSiguientes" (click)="actualizarTabla(1, termBusqueda.value)" class="btn btn-secondary" type="button">Siguiente</button>
+                    <button [disabled]="showBtnSiguientes" (click)="actualizarTabla(1)" class="btn btn-secondary" type="button">Siguiente</button>
                 </div>
             </div>
         </div>
