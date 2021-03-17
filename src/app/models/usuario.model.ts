@@ -1,5 +1,4 @@
-import { environment } from '../../environments/environment'
-import { RegisterForm } from '../interfaces/register-form.interface';
+import { environment } from '../../environments/environment';
 
 export class UsuarioTesting {
     public nombre: string;
@@ -46,7 +45,9 @@ export class Usuario {
 
     get imagenUrl() {
         if (this.img) {
-            if (this.google) {
+            // Desde que se le permite modificar las imagenes al ususario
+            // no por ser de gogle tiene que ser la imagen de google, se ha podido modificar
+            if (this.google && this.img.includes('https')) {
                 return this.img;
             } else {
                 return `${baseImageUrl}/${this.img}`;
