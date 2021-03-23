@@ -12,11 +12,12 @@ export class ModalImagenService {
 
   private baseImageUrl = `${environment.base_url}/upload/`;
 
-  public usuario: Usuario = new Usuario('', '', '');
+  // public usuario: Usuario = new Usuario('', '', '');
 
   public tipo: Tipo;
   public uid: string;
   public img: string;
+
   // Se trata de un observable al que me puedo suscribir desde donde quiera
   public imgCambiada: EventEmitter<string> = new EventEmitter<string>();
 
@@ -30,7 +31,6 @@ export class ModalImagenService {
     tipo: Tipo,
     uid: string,
     img: string = 'no-image') {
-    console.log(Tipo.usuarios);
     this.tipo = tipo;
     this.uid = uid;
     this.img = img;
@@ -41,7 +41,11 @@ export class ModalImagenService {
     }
     this._ocultarModal = false;
   }
-
+  /**
+   * Este método no sirve par nada
+   * ya que este modal se usa para todos los elementos cosn imagenes
+   * @param usuario objeto de tipo Usuario
+   */
   abrirModalAlt(usuario: Usuario) {
     /**
      * Muy importante!! no cambiar la referencia de un obejto
@@ -52,13 +56,13 @@ export class ModalImagenService {
     // this.usuario = usuario;
     // this.usuario = Usuario.populate(usuario);
 
-    this.usuario.nombre = usuario.nombre;
-    this.usuario.email = usuario.email;
-    this.usuario.uid = usuario.uid;
-    this.usuario.img = usuario.img;
-    this.usuario.role = usuario.role;
-    this.usuario.google = usuario.google;
-    this._ocultarModal = false;
+    // this.usuario.nombre = usuario.nombre;
+    // this.usuario.email = usuario.email;
+    // this.usuario.uid = usuario.uid;
+    // this.usuario.img = usuario.img;
+    // this.usuario.role = usuario.role;
+    // this.usuario.google = usuario.google;
+    // this._ocultarModal = false;
   }
 
   cerrarModal() {

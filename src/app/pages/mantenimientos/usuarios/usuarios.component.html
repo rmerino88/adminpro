@@ -52,7 +52,11 @@
                             <tr *ngFor="let usuarioItem of usuarios; let i=index">
                                 <!-- <td><img [src]="usuarioItem.imagenUrl" [alt]="usuarioItem.nombre"></td> -->
                                 <td class="text-center">
-                                    <img (click)="abrirModalImagen(usuarioItem)" [src]="usuarioItem.img | imagenurl:usuarioItem.google" [alt]="usuarioItem.nombre" class="avatar cursor">
+                                    <img
+                                        (click)="abrirModalImagen(usuarioItem)"
+                                        [src]="usuarioItem.img | imagenurl:'usuarios':usuarioItem.google"
+                                        [alt]="usuarioItem.nombre"
+                                        class="avatar cursor">
                                 </td>
                                 <td>{{usuarioItem.email}}</td>
                                 <td>{{usuarioItem.nombre}}</td>

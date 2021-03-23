@@ -1,12 +1,16 @@
+interface _UsuarioInterface {
+    nombre: string;
+    email: string;
+    img?: string;
+    _id: string;
+}
+
 export class Hospital {
 
     constructor(
         public nombre: string,
-        public email: string,
-        public passwd: string,
         public img?: string,
-        public google?: boolean,
-        public role?: string,
-        public uid?: string
+        public usuario?: _UsuarioInterface | string,
+        public _id?: string,
     ) {}
 }

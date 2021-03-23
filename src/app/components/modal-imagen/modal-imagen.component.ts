@@ -47,7 +47,9 @@ export class ModalImagenComponent implements OnInit {
         }
       }).catch( (errMsg) => {
         Swal.fire('Error!', errMsg, 'error');
-      }).finally(() => this.cerrarModal());
+      }).finally(() => {
+        this.cerrarModal();
+      });
   }
 
   cambiarImagen(file: File, result) {

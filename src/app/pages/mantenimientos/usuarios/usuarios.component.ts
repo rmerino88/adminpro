@@ -30,7 +30,6 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
   public imgSubs: Subscription;
 
-
   constructor(private usuarioService: UsuarioService,
               private loginService: LoginService,
               private busquedasService: BusquedasService,
@@ -50,7 +49,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   buscar() {
     this.cargando = true;
     if (this.termino) {
-      this.busquedasService.buscarUsuariosColeccion(this.termino, 'usuarios', '' + this.from, '' + this.limit)
+      this.busquedasService.buscarColeccion(this.termino, Tipo.usuarios, '' + this.from, '' + this.limit)
         .subscribe(({ total, resultado }) => {
           this.usuarios = resultado;
           this.totalUsuarios = total;

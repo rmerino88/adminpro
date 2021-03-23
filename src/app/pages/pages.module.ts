@@ -26,12 +26,18 @@ import { PagesComponent } from './pages.component';
  */
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
+import { PipesModule } from '../pipes/pipes.module';
+
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
-import { ImagenUrlPipe } from '../pipes/imagen-url.pipe';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+
 
 @NgModule({
     imports: [
@@ -48,7 +54,8 @@ import { ImagenUrlPipe } from '../pipes/imagen-url.pipe';
         ComponentsModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        PipesModule
     ],
     declarations: [
         /**
@@ -67,7 +74,10 @@ import { ImagenUrlPipe } from '../pipes/imagen-url.pipe';
         PerfilComponent,
         UsuariosComponent,
         // Los pipes ya no se importan, solo se declaran
-        ImagenUrlPipe
+        // ImagenUrlPipe,
+        HospitalesComponent,
+        MedicosComponent,
+        MedicoComponent
     ],
     exports: [
         ProgressComponent,

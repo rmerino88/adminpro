@@ -1,0 +1,113 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input
+                    (keyup)="buscarMedico(termBusqueda.value)"
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar médico..."
+                    #termBusqueda/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando...</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Medicos</h4>
+                        <h6 class="card-subtitle">Medicos cargados en la aplicación ({{medicos.length}})</h6>
+                    </div>
+
+                    <br />
+
+                    <div class="col-4 text-right">
+                        <!-- <button (click)="crearMedico()" class="btn btn-primary"> -->
+                            
+                        <button [routerLink]="[ './../medico', 'new' ]" class="btn btn-primary m-r-10">
+                            <i class="fa fa-medico-o"></i>
+                            Crear medico nueva ventana
+                        </button>
+                        <button (click)="abrirModalMedico()" class="btn btn-primary">
+                            <i class="fa fa-medico-o"></i>
+                            Crear medico modal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Foto</th>
+                                <th>Nombre</th>
+                                <th>Hospital</th>
+                                <th class="text-nowrap w100">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let medico of medicos; let i=index">
+                                <td class="text-center">
+                                    <img (click)="abrirModalImagen(medico)" class="imgMedico cursor"
+                                        [src]="medico.img | imagenurl:'medicos':false" [alt]="medico.nombre">
+                                </td>
+                                <td class="vertical-align-middle">
+                                    <input type="text" name="nombre" [(ngModel)]="medico.nombre" class="form-control"
+                                        placeholder="Nombre del medico...">
+                                </td>
+                                <td class="vertical-align-middle">
+                                    <!-- Se produce un error por que no se instancias nuevos elementos de tipo médico,
+                                        por lo que no se ejecuta el método constructor y no hay hospital para el médico -->
+                                    <select
+                                    class="form-control"
+                                    [(ngModel)]="medico.hospital._id"
+                                    (change)="cambiarHospital(medico)">
+                                    <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{hospital.nombre}}</option>
+                                </select>
+                                <td class="text-nowrap text-center vertical-align-middle">
+                                    <a (click)="modificarMedico(medico.mid, medico.nombre, medico.hospital._id)"
+                                        data-toggle="tooltip"
+                                        data-original-title="Save">
+                                        <i class="fa fa-save text-inverse m-r-10 cursor"></i>
+                                    </a>
+                                    <!-- <a [routerLink]="[ './../medico', medico.mid ]" -->
+                                    <!-- <a [routerLink]="[ '/dashboard/medico', medico.mid ]" -->
+                                    <a [routerLink]="[ '/dashboard', 'medico', medico.mid ]"
+                                        data-toggle="tooltip"
+                                        data-original-title="Edit">
+                                        <i class="fa fa-pencil text-inverse m-r-10 cursor"></i>
+                                    </a>
+                                    <a (click)="eliminarMedico(medico.mid, medico.nombre)"
+                                        data-toggle="tooltip"
+                                        data-original-title="Delete"
+                                        class="cursor">
+                                        <i class="fa fa-close text-danger cursor"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="desplazamiento">
+                    <button class="btn btn-secondary" type="button">Anteriores</button>
+                    <button class="btn btn-secondary" type="button">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal-medico></app-modal-medico>

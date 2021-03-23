@@ -18,6 +18,8 @@ export class FileUploadService {
   async actualizarFoto(archivo: File,
                        tipo: Tipo,
                        id: string) {
+
+    console.log('actualizarFoto', archivo, tipo, id);
     try {
       const url = `${this.base_url}/upload/${tipo}/${id}`;
       const formData = new FormData();
@@ -32,6 +34,7 @@ export class FileUploadService {
       // const imageName = await resp.json().then( body => body.name);
       // return imageName;
       const data = await resp.json();
+      console.log(data);
       if (data.ok) {
         return data.name;
       }

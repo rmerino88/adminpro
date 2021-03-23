@@ -36,8 +36,8 @@ export class PerfilComponent implements OnInit {
   public imageTempUrl: string | ArrayBuffer;
 
   constructor(private fb: FormBuilder,
-    private loginService: LoginService,
-    private fileUploadService: FileUploadService) {
+              private loginService: LoginService,
+              private fileUploadService: FileUploadService) {
     this.usuario = this.loginService.usuario;
   }
   /**

@@ -10,7 +10,6 @@ import { AuthModule } from './auth/auth.module';
 // Routing
 import { AppRoutingModule } from './routing/app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
-import { ImagenUrlPipe } from './pipes/imagen-url.pipe';
 
 @NgModule({
   declarations: [

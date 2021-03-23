@@ -1,0 +1,47 @@
+<div class="fondo-modal-imagen" [class.oculto]="modalMedicoService.ocultarModal">
+    <div class="modal fade show" id="medicoModal" tabindex="-1" role="dialog" aria-labelledby="medicoModalLabel1"
+        style="display: block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="medicoModalLabel1">Crear médico</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3>Datos del nuevo médico</h3>
+                    
+                    <div class="form-group">
+                        <label>Nombre <span class="help"> e.g. "Doctor Amor"</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="medico.nombre" >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Hospital</label>
+                        <select
+                            name="hospital"
+                            class="form-control"
+                            [(ngModel)]="medico.hospital._id">
+                            <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{hospital.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                
+                
+                <div class="modal-footer">
+                    <button (click)="cerrarModal()"
+                        type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button (click)="crearMedico()"
+                        type="button"
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i> Crear Médico
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

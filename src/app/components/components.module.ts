@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 
-import { IncrementadorComponent } from './incrementador/incrementador.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { DonaComponent } from './dona/dona.component';
-import { ChartsModule, ThemeService } from 'ng2-charts';
+import { IncrementadorComponent } from './incrementador/incrementador.component';
 import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
+import { ModalMedicoComponent } from './modal-medico/modal-medico.component';
 
 @NgModule({
   imports: [
@@ -16,12 +17,14 @@ import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
   declarations: [
     IncrementadorComponent,
     DonaComponent,
-    ModalImagenComponent
+    ModalImagenComponent,
+    ModalMedicoComponent
   ],
   exports: [
     IncrementadorComponent,
     DonaComponent,
-    ModalImagenComponent
+    ModalImagenComponent,
+    ModalMedicoComponent
   ],
   providers: [
     ThemeService

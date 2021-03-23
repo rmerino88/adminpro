@@ -1,12 +1,20 @@
-export class Medico {
-
-    constructor(
-        public nombre: string,
-        public email: string,
-        public passwd: string,
-        public img?: string,
-        public google?: boolean,
-        public role?: string,
-        public uid?: string
-    ) {}
+interface _HospitalMedico {
+    _id: string;
+    nombre: string;
+    img: string;
 }
+
+export class Medico {
+    constructor(
+        public nombre?: string,
+        public hospital?: _HospitalMedico,
+        public img?: string,
+        public mid?: string,
+    ) {
+        if (!hospital) {
+            this.hospital = { _id: '', nombre: '', img: '' };
+        }
+    }
+}
+
+

@@ -4,7 +4,10 @@
             <div class="card-body">
                 <h4 class="card-title">Ajustes perfil de usuario</h4>
                 <h6 class="card-subtitle">Información del usuario</h6>
-                <form class="form p-t-20" id="modifyformUserInfo" [formGroup]="modifyform"
+                <form
+                    class="form p-t-20"
+                    id="modifyformUserInfo"
+                    [formGroup]="modifyform"
                     (ngSubmit)="actualizarPerfil()">
                     <div class="form-group">
                         <label for="exampleInputuname">User Name</label>

@@ -6,20 +6,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ImagenUrlPipe implements PipeTransform {
 
-  baseImageUrl = `${environment.base_url}/upload/usuarios`;
+  baseImageUrl = `${environment.base_url}/upload`;
 
-  transform(img: string, ...args: unknown[]): string {
-    // console.log(img);
-
-    if (img) {
-        if (args[0]) {
-            return img;
-        } else {
-            return `${this.baseImageUrl}/${img}`;
-        }
+  transform(img: string, tipo: 'usuarios' | 'hospitales' | 'medicos', ...args: unknown[]): string {
+    // args[0] --> se envía google
+    if (!img) {
+      return `${this.baseImageUrl}/${tipo}/no-image`;
+    } else if (img.includes('https')) {
+      return img;
     } else {
-        return `${this.baseImageUrl}/no-image`;
+      return `${this.baseImageUrl}/${tipo}/${img}`;
     }
-  }
 
+  }
 }

@@ -14,6 +14,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 
 // Mantenimientos
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,9 @@ const routes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: {title: 'Rxjs'}},
       // Mantenimientos
       { path: 'usuarios', component: UsuariosComponent, data: {title: 'Usuarios de aplicación'}},
+      { path: 'hospitales', component: HospitalesComponent, data: {title: 'Hopsitales del sistema'}},
+      { path: 'medico/:id', component: MedicoComponent, data: {title: 'Modificar médico'}},
+      { path: 'medicos', component: MedicosComponent, data: {title: 'Médicos registrados'}},
     ]
   }
   // Ejemplos de paths
