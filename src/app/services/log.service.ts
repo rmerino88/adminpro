@@ -9,7 +9,5 @@ export class LogService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveLog(err: string) {
-
-  }
+  saveLog(err: string) { }
 }
