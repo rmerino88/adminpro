@@ -21,7 +21,9 @@ export class LoginService {
 
   private base_url = environment.base_url;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('Inicia loginService');
+  }
 
   set token(jwtoken: string) {
     localStorage.setItem('jwtoken', jwtoken);
@@ -29,6 +31,18 @@ export class LoginService {
 
   get token(): string {
     return localStorage.getItem('jwtoken');
+  }
+
+  set menu(menu: string) {
+    localStorage.setItem('menu', menu);
+  }
+
+  get menu(): string {
+    return JSON.parse(localStorage.getItem('menu'));
+  }
+
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' | 'NO_ROLE' {
+    return this.usuario.role;
   }
 
   /**
@@ -40,6 +54,8 @@ export class LoginService {
     return this.http.post(`${this.base_url}/login`, formData).pipe(
       tap((resp: any) => {
         this.token = resp.token;
+        console.log('login', JSON.stringify(resp.menu));
+        this.menu = JSON.stringify(resp.menu);
       })
     );
   }
@@ -52,6 +68,8 @@ export class LoginService {
     return this.http.post(`${this.base_url}/login/google`, body, options).pipe(
       tap((resp: any) => {
         this.token = resp.jsonWebToken;
+        console.log('loginGoogle', JSON.stringify(resp.menu));
+        this.menu = JSON.stringify(resp.menu);
       })
     );
   }
@@ -66,6 +84,8 @@ export class LoginService {
         if (resp) {
           this.token = resp.token;
           this.usuario = resp.usuario;
+          console.log('validarTokenOther', JSON.stringify(resp.menu));
+          this.menu = JSON.stringify(resp.menu);
         }
       }),
       map((resp: any) => {
@@ -126,6 +146,9 @@ export class LoginService {
               google,
               uid);
             // console.log(typeof this.usuario); --> Sigue diciendo que es Object, no ofrece más información
+            console.log('validarToken', JSON.stringify(resp.menu));
+            this.menu =  JSON.stringify(resp.menu);
+
             return true;
           }
         }),

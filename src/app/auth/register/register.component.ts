@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
       (response: any) => {
         const { email, google, nombre, role, uid } = response.usuario;
-        usuarioObtenido = new Usuario(nombre, email, '', '', google, role, uid);
+        usuarioObtenido = new Usuario(nombre, email, 'NO_ROLE', '', google, role, uid);
         this.router.navigateByUrl('/dashboard');
       },
       err => {

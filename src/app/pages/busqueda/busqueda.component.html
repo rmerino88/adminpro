@@ -1,0 +1,94 @@
+<div class="row animated fadeIn fast">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Usuarios</h3>
+                
+                <div *ngIf="usuarios.length === 0" class="alert alert-info" role="alert">
+                    <p class="mb-0">No hay usuarios</p>
+                </div>
+
+                <div *ngIf="usuarios.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Avatar</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="animated fadeIn fast"  *ngFor="let usuario of usuarios; let i=index">
+                                <td>{{i+1}}</td>
+                                <td><img class="avatar-mini" [src]="usuario.img | imagenurl:'usuarios'" [alt]="usuario.nombre"></td>
+                                <td>{{usuario.nombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Hospitales</h3>
+                <div *ngIf="hospitales.length === 0" class="alert alert-info" role="alert">
+                    <p class="mb-0">No hay hospitales</p>
+                </div>
+
+                <div *ngIf="hospitales.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Avatar</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="animated fadeIn fast"  *ngFor="let hospital of hospitales; let i=index">
+                                <td>{{i+1}}</td>
+                                <td><img class="avatar-mini" [src]="hospital.img | imagenurl:'hospitales'" [alt]="hospital.nombre"></td>
+                                <td>{{hospital.nombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Médicos</h3>
+                <div *ngIf="medicos.length === 0" class="alert alert-info" role="alert">
+                    <p class="mb-0">No hay médicos</p>
+                </div>
+
+                <div *ngIf="medicos.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Avatar</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr (click)="abrirMedico(medico)" class="animated fadeIn fast" *ngFor="let medico of medicos; let i=index"> -->
+                            <tr class="animated fadeIn fast"
+                                *ngFor="let medico of medicos; let i=index">
+                                <td>{{i+1}}</td>
+                                <td><img class="avatar-mini" [src]="medico.img | imagenurl:'medicos'" [alt]="medico.nombre"></td>
+                                <td>
+                                    <a [routerLink]="['/dashboard/medico', medico.mid]">{{medico.nombre}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

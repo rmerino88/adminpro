@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { Usuario } from '../../models/usuario.model';
+import { Medico } from '../../models/medico.model';
 
 declare const gapi: any;
 
@@ -15,8 +16,8 @@ export class HeaderComponent implements OnInit {
   public usuario: Usuario;
 
   constructor(private router: Router,
-              private ngZone: NgZone,
-              private loginService: LoginService) {
+    private ngZone: NgZone,
+    private loginService: LoginService) {
     this.startApp();
     this.usuario = this.loginService.usuario;
   }
@@ -27,16 +28,18 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    // TODO : Borrar el menu
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       console.log('User signed out.');
       localStorage.removeItem('jwtoken');
+      localStorage.removeItem('menu');
       /**
        * Es necesario ya que sin este run la página no se carga bien,
        * Se produce un error en consola.
        * ngZone.run()
        */
-      this.ngZone.run( () => this.router.navigateByUrl('/dashboard') );
+      this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
     });
   }
 
@@ -54,5 +57,13 @@ export class HeaderComponent implements OnInit {
     this.auth2 = this.loginService.auth2;
   }
 
+  buscarTodo(term: string) {
+    console.log(term);
+    if (!term || term.length === 0) {
+      this.router.navigateByUrl(`/dashboard`);
+      return;
+    }
+    this.router.navigateByUrl(`/dashboard/busqueda/${term}`);
+  }
 
 }

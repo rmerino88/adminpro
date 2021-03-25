@@ -25,7 +25,7 @@ export class Usuario {
     constructor(
         public nombre: string,
         public email: string,
-        public role: string = 'NO_ROLE',
+        public role: 'ADMIN_ROLE' | 'USER_ROLE' | 'NO_ROLE',
         public img?: string,
         public google?: boolean,
         public uid?: string,
