@@ -43,11 +43,11 @@ export class MedicoComponent implements OnInit, OnDestroy {
   private imgSubs: Subscription;
 
   constructor(private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private modalImagenService: ModalImagenService,
-    private medicosService: MedicosService,
-    private hospitalesService: HospitalesService) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private modalImagenService: ModalImagenService,
+              private medicosService: MedicosService,
+              private hospitalesService: HospitalesService) {
 
   }
 
@@ -56,23 +56,11 @@ export class MedicoComponent implements OnInit, OnDestroy {
     // Suscribimos al cambio de la imagen
     this.imgSubs = this.modalImagenService.imgCambiada.subscribe((img) => this.medicoSeleccionado.img = img);
 
-    // Rellenamos los hospitales disponibles en el select
-    this.hospitalesService.obtenerHospitales().subscribe((hospitales) => {
-      this.hospitales = hospitales;
-    });
-
     // Inicializamos el formgroup vacío, después se setean sus valores
     this.medicoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(6)]],
       hospital: ['', [Validators.required]],
     });
-
-    // Como trabajamos con formularios reactivos podemos observar los elementos de este
-    this.medicoForm.get('hospital').valueChanges.subscribe(
-      (hospitalId) => {
-        console.log(hospitalId);
-        this.cambiarImagenHospital(hospitalId);
-      });
 
     // Obtenemos el médico correpondiente al id de la url
     // const KEY = 'id';
@@ -94,6 +82,17 @@ export class MedicoComponent implements OnInit, OnDestroy {
         );
       }
     });
+
+    // Rellenamos los hospitales disponibles en el select
+    this.hospitalesService.obtenerHospitales().subscribe((hospitales) => {
+      this.hospitales = hospitales;
+      // Como trabajamos con formularios reactivos podemos observar los elementos de este
+      this.medicoForm.get('hospital').valueChanges.subscribe(
+        (hospitalId) => {
+          this.cambiarImagenHospital(hospitalId);
+        });
+    });
+
   }
 
   ngOnDestroy(): void {
