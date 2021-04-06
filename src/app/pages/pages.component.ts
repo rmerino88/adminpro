@@ -22,7 +22,7 @@ export class PagesComponent implements OnInit {
    */
   constructor(private settingsService: SettingsService,
               private sidebarService: SidebarService) { 
-    console.log('PagesComponent constructor');
+    // console.log('PagesComponent constructor');
     this.sidebarService.cargarMenu();
   }
   ngOnInit() {

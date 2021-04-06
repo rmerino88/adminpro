@@ -36,7 +36,6 @@ export class ModalMedicoComponent implements OnInit {
   }
 
   crearMedico() {
-    console.log('Entra a crear  el médico', this.medico);
     if (this.medico.nombre && this.medico.hospital._id) {
       this.medicosService.addMedico(this.medico.nombre, this.medico.hospital._id).subscribe(
         medico => {

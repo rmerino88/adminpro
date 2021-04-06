@@ -63,7 +63,7 @@
                             <tr *ngFor="let medico of medicos; let i=index">
                                 <td class="text-center">
                                     <img (click)="abrirModalImagen(medico)" class="imgMedico cursor"
-                                        [src]="medico.img | imagenurl:'medicos':false" [alt]="medico.nombre">
+                                        [src]="medico.img | cloudinaryimagenurl:'medicos':false" [alt]="medico.nombre">
                                 </td>
                                 <td class="vertical-align-middle">
                                     <input type="text" name="nombre" [(ngModel)]="medico.nombre" class="form-control"

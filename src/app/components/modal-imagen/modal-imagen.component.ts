@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalImagenService } from '../../services/modal-imagen.service';
 import Swal from 'sweetalert2';
 import { FileUploadService } from '../../services/file-upload.service';
+import { ImageUploadService } from '../../services/image-upload.service';
+import { Tipo } from 'src/app/models/tipos.model';
 
 @Component({
   selector: 'app-modal-imagen',
@@ -16,7 +18,8 @@ export class ModalImagenComponent implements OnInit {
 
   constructor(
     public modalImagenService: ModalImagenService,
-    private fileUploadService: FileUploadService) {
+    private fileUploadService: FileUploadService,
+    private imageUploadService: ImageUploadService) {
   }
 
   ngOnInit(): void { }
@@ -27,7 +30,7 @@ export class ModalImagenComponent implements OnInit {
     this.modalImagenService.cerrarModal();
   }
 
-  actualizarImagen() {
+  actualizarImagenOld() {
 
     const uid = this.modalImagenService.uid;
     const tipo = this.modalImagenService.tipo;
@@ -50,6 +53,30 @@ export class ModalImagenComponent implements OnInit {
       }).finally(() => {
         this.cerrarModal();
       });
+  }
+
+  actualizarImagen() {
+    const uid = this.modalImagenService.uid;
+    const tipo = this.modalImagenService.tipo;
+    this.imageUploadService.uploadFile(this.imageToUpload, tipo, uid).then( (imgCloud) => {
+      if (!imgCloud) {
+        Swal.fire('Error!', 'No ha sido posible guardar la imagen', 'error');
+      } else {
+        this.imageUploadService.modifyItem(imgCloud, tipo, uid).subscribe( (imgName) => {
+          Swal.fire({
+            title: `Proceso finalizado!`,
+            text: 'La imagen del usuario ha sido actualizada con éxito',
+            icon: 'info',
+            confirmButtonText: 'Entendido!'
+          });
+          this.modalImagenService.imgCambiada.emit(imgName);
+        });
+      }
+    }).catch((errMsg) => {
+      Swal.fire('Error!', errMsg, 'error');
+    }).finally(() => {
+      this.cerrarModal();
+    });
   }
 
   cambiarImagen(file: File, result) {

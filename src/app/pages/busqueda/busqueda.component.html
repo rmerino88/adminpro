@@ -20,7 +20,7 @@
                         <tbody>
                             <tr class="animated fadeIn fast"  *ngFor="let usuario of usuarios; let i=index">
                                 <td>{{i+1}}</td>
-                                <td><img class="avatar-mini" [src]="usuario.img | imagenurl:'usuarios'" [alt]="usuario.nombre"></td>
+                                <td><img class="avatar-mini" [src]="usuario.img | cloudinaryimagenurl:'usuarios'" [alt]="usuario.nombre"></td>
                                 <td>{{usuario.nombre}}</td>
                             </tr>
                         </tbody>
@@ -49,7 +49,7 @@
                         <tbody>
                             <tr class="animated fadeIn fast"  *ngFor="let hospital of hospitales; let i=index">
                                 <td>{{i+1}}</td>
-                                <td><img class="avatar-mini" [src]="hospital.img | imagenurl:'hospitales'" [alt]="hospital.nombre"></td>
+                                <td><img class="avatar-mini" [src]="hospital.img | cloudinaryimagenurl:'hospitales'" [alt]="hospital.nombre"></td>
                                 <td>{{hospital.nombre}}</td>
                             </tr>
                         </tbody>
@@ -80,7 +80,7 @@
                             <tr class="animated fadeIn fast"
                                 *ngFor="let medico of medicos; let i=index">
                                 <td>{{i+1}}</td>
-                                <td><img class="avatar-mini" [src]="medico.img | imagenurl:'medicos'" [alt]="medico.nombre"></td>
+                                <td><img class="avatar-mini" [src]="medico.img | cloudinaryimagenurl:'medicos'" [alt]="medico.nombre"></td>
                                 <td>
                                     <a [routerLink]="['/dashboard/medico', medico.mid]">{{medico.nombre}}</a>
                                 </td>

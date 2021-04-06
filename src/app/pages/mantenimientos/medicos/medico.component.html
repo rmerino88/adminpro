@@ -11,7 +11,7 @@
             [formGroup]="medicoForm"
             (ngSubmit)="medicoFormSubmit()">
                 <div class="form-group text-center">
-                    <img *ngIf="medicoSeleccionado" [src]="medicoSeleccionado.img | imagenurl:'medicos'" [alt]="medicoSeleccionado.nombre" (click)="abrirModalImagen()"
+                    <img *ngIf="medicoSeleccionado" [src]="medicoSeleccionado.img | cloudinaryimagenurl:'medicos'" [alt]="medicoSeleccionado.nombre" (click)="abrirModalImagen()"
                     class="animated fadeIn fast">
                 </div>
                 <div class="form-group">
@@ -46,7 +46,7 @@
                 <h4 class="card-title">Hospital</h4>
                 <h6 class="card-subtitle">{{hospitalSeleccionado.nombre}}</h6>
                 <div class="text-center">
-                    <img [src]="hospitalSeleccionado.img | imagenurl:'hospitales'" [alt]="hospitalSeleccionado.nombre"
+                    <img [src]="hospitalSeleccionado.img | cloudinaryimagenurl:'hospitales'" [alt]="hospitalSeleccionado.nombre"
                     class="animated fadeIn fast">
                 </div>
             </div>

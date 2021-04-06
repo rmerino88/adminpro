@@ -59,18 +59,6 @@ export class UsuarioService {
     );
   }
 
-  public editarUsuario(uid: string, role: string) {
-    // const httpHeaders = new HttpHeaders()
-    //   .append('x-token', this.token);
-    // const options = { headers: httpHeaders };
-    // return this.http.delete(`${this.base_url}/usuarios/${uid}`, { headers: { 'x-token': this.token } )<>.pipe(
-    return this.http.put<{ ok: boolean, uid: string }>
-      (`${this.base_url}/usuarios/${uid}`, { headers: { 'x-token': this.token } } ).pipe(
-        delay(1000),
-        map((ok) => ok)
-      );
-  }
-
   /**
    * Recibimos el objeto que contiene los datos del formulario
    * y obtenemos los datos que nos interesan.

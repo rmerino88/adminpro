@@ -58,7 +58,6 @@ export class HeaderComponent implements OnInit {
   }
 
   buscarTodo(term: string) {
-    console.log(term);
     if (!term || term.length === 0) {
       this.router.navigateByUrl(`/dashboard`);
       return;

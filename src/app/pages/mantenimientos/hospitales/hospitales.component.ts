@@ -43,7 +43,6 @@ export class HospitalesComponent implements OnInit, OnDestroy {
   }
 
   buscarHospital(termino: string) {
-    console.log('Entra termino:', termino);
     this.cargando = true;
     if (termino) {
       this.busquedasService.buscarColeccion(termino, Tipo.hospitales)

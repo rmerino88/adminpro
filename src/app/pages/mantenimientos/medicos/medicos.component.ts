@@ -56,7 +56,6 @@ export class MedicosComponent implements OnInit, OnDestroy {
   }
 
   buscarMedico(termino: string) {
-    console.log('Entra termino:', termino);
     this.cargando = true;
     if (termino) {
       this.busquedasService.buscarColeccion(termino, Tipo.medicos)

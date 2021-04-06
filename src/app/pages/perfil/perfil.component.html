@@ -50,8 +50,13 @@
                 -->
                 <!-- <img src="{{usuario.imagenUrl}}" alt="{{usuario.email}}"> -->
                 <!-- <img [style.display]= "mostrarImagen?'block':'none'" [src]="imageTempUrl" [alt]="usuario.email"> -->
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <img *ngIf="!imageTempUrl" [src]="usuario.imagenUrl" [alt]="usuario.email"
+                        class="animated fadeIn fast">
+                    <img *ngIf="imageTempUrl" [src]="imageTempUrl" class="animated fadeIn fast">
+                </div> -->
+                <div class="text-center">
+                    <img *ngIf="!imageTempUrl" [src]="usuario.img | cloudinaryimagenurl:'usuarios'" [alt]="usuario.email"
                         class="animated fadeIn fast">
                     <img *ngIf="imageTempUrl" [src]="imageTempUrl" class="animated fadeIn fast">
                 </div>

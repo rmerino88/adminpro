@@ -84,7 +84,7 @@ export class LoginService {
         if (resp) {
           this.token = resp.token;
           this.usuario = resp.usuario;
-          console.log('validarTokenOther', JSON.stringify(resp.menu));
+          // console.log('validarTokenOther', JSON.stringify(resp.menu));
           this.menu = JSON.stringify(resp.menu);
         }
       }),
@@ -146,7 +146,7 @@ export class LoginService {
               google,
               uid);
             // console.log(typeof this.usuario); --> Sigue diciendo que es Object, no ofrece más información
-            console.log('validarToken', JSON.stringify(resp.menu));
+            // console.log('validarToken', JSON.stringify(resp.menu));
             this.menu =  JSON.stringify(resp.menu);
 
             return true;

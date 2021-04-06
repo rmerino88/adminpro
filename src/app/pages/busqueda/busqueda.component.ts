@@ -35,7 +35,6 @@ export class BusquedaComponent implements OnInit {
 
   buscarTodo(term: string) {
     this.busquedasService.buscarTodo(term).subscribe(({usuarios, hospitales, medicos}) => {
-      console.log(usuarios, hospitales, medicos);
       this.usuarios = usuarios;
       this.hospitales = hospitales;
       this.medicos = medicos;

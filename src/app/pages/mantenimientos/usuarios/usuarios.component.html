@@ -54,7 +54,7 @@
                                 <td class="text-center">
                                     <img
                                         (click)="abrirModalImagen(usuarioItem)"
-                                        [src]="usuarioItem.img | imagenurl:'usuarios':usuarioItem.google"
+                                        [src]="usuarioItem.img | cloudinaryimagenurl:'usuarios':usuarioItem.google"
                                         [alt]="usuarioItem.nombre"
                                         class="avatar cursor">
                                 </td>

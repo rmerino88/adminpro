@@ -74,8 +74,6 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         RxjsComponent,
         PerfilComponent,
         UsuariosComponent,
-        // Los pipes ya no se importan, solo se declaran
-        // ImagenUrlPipe,
         HospitalesComponent,
         MedicosComponent,
         MedicoComponent,

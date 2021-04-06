@@ -6,6 +6,7 @@ import { Usuario } from '../../models/usuario.model';
 import { LoginService } from '../../services/login.service';
 import { FileUploadService } from '../../services/file-upload.service';
 import { Tipo } from 'src/app/models/tipos.model';
+import { ImageUploadService } from '../../services/image-upload.service';
 
 @Component({
   selector: 'app-perfil',
@@ -37,7 +38,8 @@ export class PerfilComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
-              private fileUploadService: FileUploadService) {
+              private fileUploadService: FileUploadService,
+              private imageUploadService: ImageUploadService) {
     this.usuario = this.loginService.usuario;
   }
   /**
@@ -96,7 +98,7 @@ export class PerfilComponent implements OnInit {
     };
   }
 
-  actualizarImagen() {
+  actualizarImagenOld() {
     this.fileUploadService.actualizarFoto(this.image, Tipo.usuarios, this.usuario.uid)
       .then((img) => {
         if (!img) {
@@ -115,5 +117,26 @@ export class PerfilComponent implements OnInit {
       }).catch((errMsg) => {
         Swal.fire('Error!', errMsg, 'error');
       });
+  }
+  
+  actualizarImagen() {
+    this.imageUploadService.uploadFile(this.image, Tipo.usuarios, this.usuario.uid).then((imgCloud) => {
+      if (!imgCloud) {
+        Swal.fire('Error!', 'No ha sido posible guardar la imagen', 'error');
+      } else {
+        this.imageUploadService.modifyItem(imgCloud, Tipo.usuarios, this.usuario.uid).subscribe((imgName) => {
+          this.usuario.img = imgName;
+          Swal.fire({
+            title: 'Proceso finalizado!',
+            text: 'La imagen del usuario ha sido actualizada con éxito',
+            icon: 'info',
+            confirmButtonText: 'Entendido!'
+          });
+          this.image = null;
+        });
+      }
+    }).catch((errMsg) => {
+      Swal.fire('Error!', errMsg, 'error');
+    });
   }
 }
